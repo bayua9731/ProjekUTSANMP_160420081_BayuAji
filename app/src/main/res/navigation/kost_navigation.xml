@@ -15,14 +15,17 @@
             android:id="@+id/action_itemHome_to_detailHomeListFragment"
             app:destination="@id/detailHomeListFragment" />
         <action
-            android:id="@+id/action_itemHome_to_filterFragment"
-            app:destination="@id/filterFragment" />
-        <action
             android:id="@+id/action_itemHome_to_FIlterPutriFragment"
             app:destination="@id/FIlterPutriFragment" />
         <action
             android:id="@+id/action_itemHome_to_sortByFragment"
             app:destination="@id/sortByFragment" />
+        <action
+            android:id="@+id/action_itemHome_to_termurahFragment"
+            app:destination="@id/termurahFragment" />
+        <action
+            android:id="@+id/action_itemHome_to_filterFragment"
+            app:destination="@id/filterFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemProfile"
@@ -33,7 +36,11 @@
         android:id="@+id/itemSearch"
         android:name="com.anmp.projekuts.view.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_itemSearch_to_detailHomeListFragment"
+            app:destination="@id/detailHomeListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailHomeListFragment"
         android:name="com.anmp.projekuts.view.DetailHomeListFragment"
@@ -43,15 +50,6 @@
             android:name="idhome"
             app:argType="string" />
     </fragment>
-    <dialog
-        android:id="@+id/filterFragment"
-        android:name="com.anmp.projekuts.view.FilterFragment"
-        android:label="fragment_filter"
-        tools:layout="@layout/fragment_filter" >
-        <action
-            android:id="@+id/action_filterFragment_to_detailHomeListFragment"
-            app:destination="@id/detailHomeListFragment" />
-    </dialog>
     <fragment
         android:id="@+id/sortByFragment"
         android:name="com.anmp.projekuts.view.SortByFragment"
@@ -68,6 +66,24 @@
         tools:layout="@layout/fragment_f_ilter_putri" >
         <action
             android:id="@+id/action_FIlterPutriFragment_to_detailHomeListFragment"
+            app:destination="@id/detailHomeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termurahFragment"
+        android:name="com.anmp.projekuts.view.TermurahFragment"
+        android:label="fragment_termurah"
+        tools:layout="@layout/fragment_termurah" >
+        <action
+            android:id="@+id/action_termurahFragment_to_detailHomeListFragment"
+            app:destination="@id/detailHomeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.anmp.projekuts.view.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter" >
+        <action
+            android:id="@+id/action_filterFragment_to_detailHomeListFragment"
             app:destination="@id/detailHomeListFragment" />
     </fragment>
 </navigation>

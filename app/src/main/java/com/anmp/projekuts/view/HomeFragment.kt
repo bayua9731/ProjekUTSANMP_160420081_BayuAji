@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
     private lateinit var viewModel: ViewModelList
-    private val studentListAdapter = ListHomeAdapter(arrayListOf())
+    private val homeListAdapter = ListHomeAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,17 +31,31 @@ class HomeFragment : Fragment() {
             viewModel = ViewModelProvider(this).get(ViewModelList::class.java)
             viewModel.refresh()
             recView.layoutManager = LinearLayoutManager(context)
-            recView.adapter = studentListAdapter
+            recView.adapter = homeListAdapter
             observeViewModel()
-        btnFilter.setOnClickListener {
-            val action=HomeFragmentDirections.actionItemHomeToFilterFragment()
+            btnFilter.setOnClickListener {
+                val action=HomeFragmentDirections.actionItemHomeToFilterFragment()
+                Navigation.findNavController(it).navigate(action)
+            }
+            btnFilter2.setOnClickListener {
+                val action=HomeFragmentDirections.actionItemHomeToFIlterPutriFragment()
+                Navigation.findNavController(it).navigate(action)
+            }
+
+            btnSort.setOnClickListener {
+                val action=HomeFragmentDirections.actionItemHomeToSortByFragment()
+                Navigation.findNavController(it).navigate(action)
+            }
+
+        btnSort2.setOnClickListener {
+            val action=HomeFragmentDirections.actionItemHomeToTermurahFragment()
             Navigation.findNavController(it).navigate(action)
         }
     }
 
     fun observeViewModel() {
         viewModel.homeLD.observe(viewLifecycleOwner, Observer {
-            studentListAdapter.updateHomeList(it)
+            homeListAdapter.updateHomeList(it)
         })
     }
 }

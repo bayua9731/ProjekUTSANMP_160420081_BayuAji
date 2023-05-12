@@ -10,21 +10,21 @@ import com.anmp.projekuts.model.Rumah
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_list_home.view.*
 
-class ListHomeAdapter(val homelist: ArrayList<Rumah>) :
-    RecyclerView.Adapter<ListHomeAdapter.HomeViewHolder>() {
-    class HomeViewHolder(var view: View) : RecyclerView.ViewHolder(view)
+class TerdekatAdapter(val homelist: ArrayList<Rumah>) :
+    RecyclerView.Adapter<TerdekatAdapter.TerdekatViewHolder>() {
+    class TerdekatViewHolder(var view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType:
         Int
-    ): HomeViewHolder {
+    ): TerdekatViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.fragment_list_home, parent, false)
-        return HomeViewHolder(view)
+        return TerdekatViewHolder(view)
 
     }
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TerdekatViewHolder, position: Int) {
         holder.view.txtNama.text=homelist[position].namaRumah
         holder.view.txtAlamat.text=homelist[position].alamatRumah
         holder.view.txtJarak.text="Jarak : "+homelist[position].jarak+" km"
@@ -32,7 +32,7 @@ class ListHomeAdapter(val homelist: ArrayList<Rumah>) :
         holder.view.txtCategory.text="KOS "+homelist[position].kategori
         Picasso.get().load(homelist[position].photo).into(holder.view.imageView)
         holder.view.btnDetail.setOnClickListener {
-            val action=HomeFragmentDirections.actionItemHomeToDetailHomeListFragment(homelist[position].id.toString())
+            val action=SortByFragmentDirections.actionSortByFragmentToDetailHomeListFragment(homelist[position].id.toString())
             Navigation.findNavController(it).navigate(action)
         }
     }
@@ -45,4 +45,5 @@ class ListHomeAdapter(val homelist: ArrayList<Rumah>) :
         homelist.addAll(newHomeList)
         notifyDataSetChanged()
     }
+
 }

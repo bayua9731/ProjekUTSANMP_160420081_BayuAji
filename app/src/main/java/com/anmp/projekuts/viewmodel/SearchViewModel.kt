@@ -12,14 +12,14 @@ import com.anmp.projekuts.model.Rumah
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class FilterViewModel(application: Application): AndroidViewModel(application) {
+class SearchViewModel(application: Application): AndroidViewModel(application) {
     val homeLD = MutableLiveData<ArrayList<Rumah>>()
-    val TAG="filterTag"
+    val TAG="allTag"
     private var queue: RequestQueue? = null
 
-    fun refresh(filter:String) {
+    fun refresh(query:String) {
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://192.168.100.43/projekanmp/filter.php?filter="+filter
+        val url = "http://192.168.100.43/projekanmp/search.php?query="+query
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
