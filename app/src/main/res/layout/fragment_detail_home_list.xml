@@ -19,7 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtDetailKategori"
@@ -51,8 +51,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -70,8 +70,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -89,8 +89,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -107,8 +107,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -126,8 +126,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -143,8 +143,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -162,7 +162,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="false"/>
+                    android:enabled="false" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
@@ -173,6 +173,24 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="140dp"
                 tools:src="@tools:sample/avatars" />
+
+            <EditText
+                android:id="@+id/editTextSewa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                app:layout_constraintStart_toStartOf="@+id/txtDetailDeskripsi"
+                app:layout_constraintTop_toBottomOf="@+id/txtDetailDeskripsi" />
+
+            <Button
+                android:id="@+id/txtButtonSewa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                app:layout_constraintTop_toTopOf="@+id/editTextSewa"
+                tools:layout_editor_absoluteX="286dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

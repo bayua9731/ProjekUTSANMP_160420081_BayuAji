@@ -28,7 +28,7 @@ class FIlterPutriFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(FilterViewModel::class.java)
-        viewModel.refresh("putri")
+        viewModel.refresh("Putri")
         recViewPutri.layoutManager = LinearLayoutManager(context)
         recViewPutri.adapter = homeListAdapter
         observeViewModel()

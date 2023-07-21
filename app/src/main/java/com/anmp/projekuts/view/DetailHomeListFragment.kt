@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.anmp.projekuts.Global
 import com.anmp.projekuts.R
 import com.anmp.projekuts.viewmodel.DetailViewModel
 import com.squareup.picasso.Picasso
@@ -27,11 +28,15 @@ class DetailHomeListFragment : Fragment() {
         if (arguments != null) {
             val id = DetailHomeListFragmentArgs.fromBundle(requireArguments()).idhome
             viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-            viewModel.fetch(id)
+            viewModel.fetch(Integer.parseInt(id))
 
             observeViewModel()
+            txtButtonSewa.setOnClickListener {
+                Global.terbelirumah=id
+            }
 
         }
+
 
     }
     fun observeViewModel(){

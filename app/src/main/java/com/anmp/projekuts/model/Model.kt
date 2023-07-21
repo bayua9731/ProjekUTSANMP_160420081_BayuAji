@@ -1,22 +1,30 @@
 package com.anmp.projekuts.model
 
-import com.google.gson.annotations.SerializedName
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity
 data class Rumah(
-    val id:String?,
-    @SerializedName("nama")
+    @ColumnInfo(name="namaRumah")
     val namaRumah:String?,
-    @SerializedName("alamat")
+    @ColumnInfo(name="alamat")
     val alamatRumah:String?,
-    @SerializedName("harga")
+    @ColumnInfo(name="harga")
     val hargaRumah:String?,
+    @ColumnInfo(name="photo")
     val photo:String?,
+    @ColumnInfo(name="jarak")
     val jarak:String?,
-    @SerializedName("pemilik")
+    @ColumnInfo(name="pemilik")
     val pemilikRumah:String?,
-    @SerializedName("kontak")
+    @ColumnInfo(name="kontak")
     val nomorTelepon:String?,
+    @ColumnInfo(name="deskripsi")
     val deskripsi:String?,
+    @ColumnInfo(name="kategori")
     val kategori:String?
-
-)
+){
+    @PrimaryKey(autoGenerate = true)
+    var idRumah:Int=0
+}

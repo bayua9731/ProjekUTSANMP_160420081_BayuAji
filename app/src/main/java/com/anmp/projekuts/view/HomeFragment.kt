@@ -10,9 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.anmp.projekuts.R
+import com.anmp.projekuts.model.Rumah
+import com.anmp.projekuts.model.Users
 import com.anmp.projekuts.viewmodel.FilterViewModel
+import com.anmp.projekuts.viewmodel.RegisterViewModel
 import com.anmp.projekuts.viewmodel.ViewModelList
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_register.*
 
 class HomeFragment : Fragment() {
     private lateinit var viewModel: ViewModelList
@@ -27,9 +31,21 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(ViewModelList::class.java)
+        val rumah= Rumah("Kost AM 12",
+            "Jl. Tenggilis Mejoyo Blok AM No.12, Kali Rungkut, Kec. Rungkut, Surabaya, Jawa Timur 60293",
+            "500000",
+            "https://lh5.googleusercontent.com/p/AF1QipMqNTAyOMvaqGJCutFaQgNscRlhyiqbdSqwNA3y=w253-h337-k-no",
+            "Agus",
+            "123123123",
+            "1",
 
-            viewModel = ViewModelProvider(this).get(ViewModelList::class.java)
+            "Kamar Mandi Dalam,Laundry,Area Parkiran Luas,WIFI,Token PLN,Dapur,Dekat Ubaya",
+            "Putra",
+            )
+        viewModel.add(listOf(rumah))
             viewModel.refresh()
+
             recView.layoutManager = LinearLayoutManager(context)
             recView.adapter = homeListAdapter
             observeViewModel()
@@ -51,6 +67,8 @@ class HomeFragment : Fragment() {
             val action=HomeFragmentDirections.actionItemHomeToTermurahFragment()
             Navigation.findNavController(it).navigate(action)
         }
+
+
     }
 
     fun observeViewModel() {

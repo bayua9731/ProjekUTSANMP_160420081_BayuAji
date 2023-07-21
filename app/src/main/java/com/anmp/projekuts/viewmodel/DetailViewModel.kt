@@ -5,39 +5,33 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.room.Room
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.anmp.projekuts.model.Rumah
+import com.anmp.projekuts.model.RumahDatabase
 import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class DetailViewModel (application: Application): AndroidViewModel(application) {
+class DetailViewModel (application: Application): AndroidViewModel(application),CoroutineScope {
+
     val homeLD = MutableLiveData<Rumah>()
-    val TAG = "detailhome"
-    private var queue: RequestQueue? = null
-    fun fetch(id: String) {
+    private var job= Job()
 
-        queue = Volley.newRequestQueue(getApplication())
-        val url = "http://192.168.100.43/projekanmp/detailkos.php?id=" + id
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            {
-                val result = Gson().fromJson<Rumah>(it, Rumah::class.java)
-                homeLD.value = result
-                Log.d("showvoley", result.toString())
-            },
-            {
-                Log.d("showvoley", it.toString())
-                homeLD.value = null
-            })
-        stringRequest.tag = TAG
-        queue?.add(stringRequest)
+    override val coroutineContext: CoroutineContext
+        get() = job+ Dispatchers.IO
+    fun fetch(id: Int) {
+            launch {
+                val db= Room.databaseBuilder(getApplication(), RumahDatabase::class.java,"rumah").build()
+                homeLD.postValue(db.rumahDao().selectDetailRumah(id))
 
+            }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
-    }
 }

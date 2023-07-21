@@ -32,7 +32,7 @@ class TerdekatAdapter(val homelist: ArrayList<Rumah>) :
         holder.view.txtCategory.text="KOS "+homelist[position].kategori
         Picasso.get().load(homelist[position].photo).into(holder.view.imageView)
         holder.view.btnDetail.setOnClickListener {
-            val action=SortByFragmentDirections.actionSortByFragmentToDetailHomeListFragment(homelist[position].id.toString())
+            val action=SortByFragmentDirections.actionSortByFragmentToDetailHomeListFragment(homelist[position].idRumah.toString())
             Navigation.findNavController(it).navigate(action)
         }
     }
@@ -40,7 +40,7 @@ class TerdekatAdapter(val homelist: ArrayList<Rumah>) :
     override fun getItemCount(): Int {
         return homelist.size
     }
-    fun updateHomeList(newHomeList: ArrayList<Rumah>) {
+    fun updateHomeList(newHomeList: List<Rumah>) {
         homelist.clear()
         homelist.addAll(newHomeList)
         notifyDataSetChanged()
